@@ -29,14 +29,14 @@ html,body{
     opacity: 0.4;
 }
 
-.w30{
-    width: 30%;
+.w20{
+    width: 20%;
     float: left;
 }
 
-.w70{
+.w80{
     float: left;
-    width: 70%;
+    width: 80%;
 }
 
 .w100{
@@ -157,119 +157,50 @@ main{
     transform: translate(-50%,-50%);
     width: 75%;
     background-color: #9095a1;
-    padding: 20px;
 }
 
 .entrada-box h1{
     font-size: 35px;
-    margin-bottom: 20px;
     border-bottom: 1px solid #626670;
+    padding: 20px;
+    border: 2px solid black;
 }
 
-.entrada-box form{
-    width: 50%;
-    padding: 5px 2%;
-    float: left;
-}
-
-.form-wraper{
-    margin-bottom: 15px;
-}
-
-.form-wraper label{
-    display: block;
-    font-size: 18px;
-    margin-bottom: 5px;
-    padding-left: 2.5px;
-}
-
-.form-wraper input{
+.entrada-box table{
     width: 100%;
-    height: 45px;
-    line-height: 45px;
-    padding-left: 15px;
-    font-size: 17px;
-    border: 1px solid #888;
-}
-
-.form-wraper select{
-    width: 100%;
-    height: 45px;
-    border: 1px solid #888;
-}
-
-.form-wraper select{
-    font-size: 18px;
-    padding-left: 5px;
-}
-
-.form-wraper input[type=button]{
-    padding: 0;
-    cursor: pointer;
-    background-color: #626670;
-    color: white;
-}
-
-.form-wraper input[type=button]:hover{
-    background-color: #585b64;
-}
-
-
-.pre-saida{
-    float: left;
-    padding: 5px 20px;
-    width: 50%;
-}
-
-.pre-saida .lucro, .investimento{
-    width: 100%;
-    text-align: center;
-    margin: 20px 0;
-    display: inline-block;
-}
-
-.pre-saida h2{
-    font-size: 27px;
-}
-
-.pre-saida p{
-    font-size: 26px;
-}
-
-/****/
-
-
-
-/* Corpo - Historico */
-
-.historico{
-    position: absolute;
-    top: 40px;
-    left: 60%;
-    transform: translateX(-50%);
-    width: 75%;
-    height: auto;
-    background-color: #9095a1;
+    padding: 5px 0;
     border-collapse: collapse;
 }
 
-.historico thead th{
+.entrada-box thead tr:first-of-type th{
     border: 2px solid black;
+    padding: 15px 0;
     font-size: 20px;
-    padding: 5px;
+    text-transform: uppercase;
 }
 
-.historico tbody th{
+.entrada-box thead th input,
+.entrada-box thead th select{
     border: 1px solid black;
-    padding: 7px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #808591;
+    color: white;
+    font-size: 17px;
 }
 
-/****/
+.entrada-box thead th input::placeholder{
+    color: rgba(255,255,255,0.5);
+}
 
+.entrada-box thead th input[type=button]:hover{
+    background-color: #626670;
+    cursor: pointer;
+}
 
-
-/* Corpo - Relatorio */
-
-
-
-/****/
+.entrada-box table tbody td{
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid black;
+}

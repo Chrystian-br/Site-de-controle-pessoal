@@ -44,30 +44,24 @@ $(function(){
         
     })
 
-    if(localStorage.lucro == undefined){
+    if(localStorage.lucro == undefined || localStorage.lucro == 'NaN'){
         localStorage.lucro = 0;
     }
 
-    if(localStorage.investimento == undefined){
+    if(localStorage.investimento == undefined || localStorage.investimento == 'NaN'){
         localStorage.investimento = 0;
     } 
 
-    var valorInv = 0;
-
     function valorInvestido(valor){
         localStorage.investimento = Number(localStorage.investimento) + valor;
-        return valorInv += valor;
     }
-    
-    var valorLucro = 0;
+
 
     function valorLucrado(valor,tipo){
         if(tipo == 'credito'){
             localStorage.lucro = Number(localStorage.lucro) + valor;
-            return valorLucro += valor;
         } else if(tipo == 'd-fixa' || tipo == "d-variavel"){
             localStorage.lucro = Number(localStorage.lucro) - valor;
-            return valorLucro -= valor;
         }
 
     }

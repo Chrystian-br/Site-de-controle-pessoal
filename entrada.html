@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-    <title>Site para controle pessoal<title>
+    <title>Site para controle pessoal</title>
 </head>
 <body>
     
@@ -18,7 +18,6 @@
         <nav class="desktop-menu">
             <ul>
                 <li><a class="select" href="">Entrada</a></li>
-                <li><a href="historico.html">Histórico</a></li>
                 <li><a href="saida.html">Relatório</a></li>
                 <li><a href="">Previsão</a></li>
             </ul>
@@ -42,43 +41,49 @@
 
         <main>
             <div class="entrada-box">
-                <form>
+                <table>
                     <h1>Entrada de informações</h1>
-                    <div class="form-wraper w70">
-                        <label for="entrada-valor">Valor</label>
-                        <input type="number" id="entrada-valor" placeholder="999.99">
-                    </div>
-                    <div class="form-wraper w30">
-                        <label for="entrada-tipo">Tipo de transação</label>
-                        <select id="entrada-tipo">
-                            <option value="credito">Crédito</option>
-                            <option value="d-fixa">Despesa fixa</option>
-                            <option value="d-variavel">Despesa variável</option>
-                            <option value="investido">Investido</option>
-                        </select>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="form-wraper w100">
-                        <label for="entrada-descricao">Descrição</label>
-                        <input type="text" id="entrada-descricao" placeholder="Descrição da transação">
-                    </div>
-                    <div class="form-wraper w100">
-                        <input type="button" id="entrada-btn" value="Adicionar">
-                    </div>
-                </form>
-
-                <div class="pre-saida">
-                    <h1>Previsualização</h1>
-                    <div class="lucro">
-                        <h2>Lucro gerado:</h2>
-                        <p>0.00</p>
-                    </div>
-                    <div class="investimento">
-                        <h2>Investido:</h2>
-                        <p>0.00</p>
-                    </div>
-                </div>
-                <div class="clear"></div>
+                    <thead>
+                        <tr>
+                            <th>Valor</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                        </tr>
+                        <tr>
+                            <th><input class="w100" type="text" id="entrada-valor" placeholder="Insira o valor"></th>
+                            <th><select class="w100" id="entrada-tipo">
+                                <option value="credito">Crédito</option>
+                                <option value="d-fixa">Despesa fixa</option>
+                                <option value="d-variavel">Despesa variável</option>
+                                <option value="investido">Investido</option>
+                                </select>
+                            </th>
+                            <th><input class="w80" type="text" id="entrada-descricao" placeholder="Insira a descrição"> <input class="w20" id="entrada-btn" type="button" value="Adicionar"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>999.99</td>
+                            <td>Despesa Variável</td>
+                            <td>Lanche comprado</td>
+                        </tr>
+                        <tr>
+                            <td>999.99</td>
+                            <td>Despesa Variável</td>
+                            <td>Lanche comprado</td>
+                        </tr>
+                        <tr>
+                            <td>999.99</td>
+                            <td>Despesa Variável</td>
+                            <td>Lanche comprado</td>
+                        </tr>
+                        <tr>
+                            <td>999.99</td>
+                            <td>Despesa Variável</td>
+                            <td>Lanche comprado</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div> <!--entrada-box-->
         </main>
     </section> <!--corpo-->
