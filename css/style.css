@@ -144,19 +144,18 @@ i.btn-menu{
 /* Corpo - Entrada */
 
 main{
-    position: relative;
     width: 100%;
     height: 100%;
     padding: 0 70px;
 }
 
 .entrada-box{
-    position: absolute;
-    top: 45%;
-    left: 60%;
-    transform: translate(-50%,-50%);
-    width: 75%;
-    background-color: #9095a1;
+    position: relative;
+    left: 20%;
+    top: 75px;
+    width: 82.5%;
+    max-height: 81.3%;
+    overflow-y: auto;
 }
 
 .entrada-box h1{
@@ -164,12 +163,18 @@ main{
     border-bottom: 1px solid #626670;
     padding: 20px;
     border: 2px solid black;
+    background-color: #9095a1;
 }
 
 .entrada-box table{
     width: 100%;
+    max-height: inherit;
     padding: 5px 0;
     border-collapse: collapse;
+}
+
+.entrada-box thead{
+    background-color: #9095a1;
 }
 
 .entrada-box thead tr:first-of-type th{
@@ -199,8 +204,13 @@ main{
     cursor: pointer;
 }
 
+.entrada-box table tbody{
+    background-color: #9095a1;
+}
+
 .entrada-box table tbody td{
     text-align: center;
     padding: 10px 0;
     border: 1px solid black;
 }
+
