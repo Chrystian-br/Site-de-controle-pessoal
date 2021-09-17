@@ -2,7 +2,7 @@ $(function(){
 
     // Abrindo e fechando o menu lateral
     $('.btn-menu').click(function(){
-        if($('.sidebar').css('width') > '0px'){
+        if($('.sidebar').css('display') == 'block'){
             $('.sidebar').animate({
                 'width': '0%',
             }).fadeOut(5);
@@ -13,10 +13,10 @@ $(function(){
             })
 
             $('.btn-menu').animate({
-                'left':'2.5%'
+                'left':'4%'
             })
 
-        } else if($('.sidebar').css('width') == '0px') {
+        } else if($('.sidebar').css('display') == 'none') {
             $('.sidebar').fadeIn(10).animate({
                 'width':'20%'
             })
@@ -50,25 +50,25 @@ $(function(){
 
     for(let i = 0; i < lista.length; i++){
         if(lista[i].tipo == 'Crédito'){
-            $('tbody').prepend(`<tr style="background-color: green">
+            $('tbody').prepend(`<tr style="background-color: darkgreen">
                 <td>R$${lista[i].valor}</td>
                 <td>${lista[i].tipo}</td>
                 <td>${lista[i].desc}</td>
             </tr>`)
         } else if (lista[i].tipo == 'Despesa variável'){
-            $('tbody').prepend(`<tr style="background-color: red">
+            $('tbody').prepend(`<tr style="background-color: darkorange">
                 <td>R$${lista[i].valor}</td>
                 <td>${lista[i].tipo}</td>
                 <td>${lista[i].desc}</td>
             </tr>`)
         } else if (lista[i].tipo == 'Despesa fixa'){
-            $('tbody').prepend(`<tr style="background-color: orange">
+            $('tbody').prepend(`<tr style="background-color: darkred">
                 <td>R$${lista[i].valor}</td>
                 <td>${lista[i].tipo}</td>
                 <td>${lista[i].desc}</td>
             </tr>`)
         } else if (lista[i].tipo == 'Investido'){
-            $('tbody').prepend(`<tr style="background-color: blue">
+            $('tbody').prepend(`<tr style="background-color: darkblue">
                 <td>R$${lista[i].valor}</td>
                 <td>${lista[i].tipo}</td>
                 <td>${lista[i].desc}</td>
@@ -77,39 +77,43 @@ $(function(){
     }
 
     $('input[type=button]').click(function(){
-        var addItem = new item($('#entrada-valor').val(), $('#entrada-descricao').val(), $('#entrada-tipo').val())
 
-        lista.push(addItem);
+        if($('#entrada-valor').val() == ''){
+            alert('por favor, preencha o campo do valor!')
+        } else {
+            var addItem = new item($('#entrada-valor').val(), $('#entrada-descricao').val(), $('#entrada-tipo').val())
+            lista.push(addItem);
 
-        var listaSalva = JSON.stringify(lista);
-        localStorage.listaSalva = listaSalva;
-
+            var listaSalva = JSON.stringify(lista);
+            localStorage.listaSalva = listaSalva;
         
-
-        if(addItem.tipo == 'Crédito'){
-            $('tbody').prepend(`<tr style="background-color: green">
-                <td>R$${addItem.valor}</td>
-                <td>${addItem.tipo}</td>
-                <td>${addItem.desc}</td>
-            </tr>`)
-        } else if (addItem.tipo == 'Despesa variável'){
-            $('tbody').prepend(`<tr style="background-color: red">
-                <td>R$${addItem.valor}</td>
-                <td>${addItem.tipo}</td>
-                <td>${addItem.desc}</td>
-            </tr>`)
-        } else if (addItem.tipo == 'Despesa fixa'){
-            $('tbody').prepend(`<tr style="background-color: orange">
-                <td>R$${addItem.valor}</td>
-                <td>${addItem.tipo}</td>
-                <td>${addItem.desc}</td>
-            </tr>`)
-        } else if (addItem.tipo == 'Investido'){
-            $('tbody').prepend(`<tr style="background-color: blue">
-                <td>R$${addItem.valor}</td>
-                <td>${addItem.tipo}</td>
-                <td>${addItem.desc}</td>
-            </tr>`)
+            if(addItem.tipo == 'Crédito'){
+                $('tbody').prepend(`<tr style="background-color: darkgreen">
+                    <td>R$${addItem.valor}</td>
+                    <td>${addItem.tipo}</td>
+                    <td>${addItem.desc}</td>
+                </tr>`)
+            } else if (addItem.tipo == 'Despesa variável'){
+                $('tbody').prepend(`<tr style="background-color: darkorange">
+                    <td>R$${addItem.valor}</td>
+                    <td>${addItem.tipo}</td>
+                    <td>${addItem.desc}</td>
+                </tr>`)
+            } else if (addItem.tipo == 'Despesa fixa'){
+                $('tbody').prepend(`<tr style="background-color: darkred">
+                    <td>R$${addItem.valor}</td>
+                    <td>${addItem.tipo}</td>
+                    <td>${addItem.desc}</td>
+                </tr>`)
+            } else if (addItem.tipo == 'Investido'){
+                $('tbody').prepend(`<tr style="background-color: darkblue">
+                    <td>R$${addItem.valor}</td>
+                    <td>${addItem.tipo}</td>
+                    <td>${addItem.desc}</td>
+                </tr>`)
+            }
         }
     })
+
+    /*****/
 })
