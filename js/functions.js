@@ -35,17 +35,18 @@ $(function(){
     /*****/
 
     // Recebendo as informações do formulário, colocando-as no histórico e salvando-as no localStorage
-    if(localStorage.listaSalva == undefined || localStorage.listaSalva == 'NaN'){
+    if(localStorage.listaSalva == undefined || localStorage.listaSalva == 'NaN' || localStorage.listaSalva == ''){
         var lista = [];
         localStorage.listaSalva = lista;
     } else {
         lista = JSON.parse(localStorage.getItem('listaSalva'));
     }
 
-    function item(valor,desc,tipo){
+    function item(valor,desc,tipo,data){
         this.valor = valor;
         this.desc = desc;
         this.tipo = tipo;
+        this.data = data;
     }
 
     for(let i = 0; i < lista.length; i++){
@@ -53,24 +54,28 @@ $(function(){
             $('tbody').prepend(`<tr style="background-color: darkgreen">
                 <td>R$${lista[i].valor}</td>
                 <td>${lista[i].tipo}</td>
+                <td>${lista[i].data}</td>
                 <td>${lista[i].desc}</td>
             </tr>`)
         } else if (lista[i].tipo == 'Despesa variável'){
             $('tbody').prepend(`<tr style="background-color: darkorange">
                 <td>R$${lista[i].valor}</td>
                 <td>${lista[i].tipo}</td>
+                <td>${lista[i].data}</td>
                 <td>${lista[i].desc}</td>
             </tr>`)
         } else if (lista[i].tipo == 'Despesa fixa'){
             $('tbody').prepend(`<tr style="background-color: darkred">
                 <td>R$${lista[i].valor}</td>
                 <td>${lista[i].tipo}</td>
+                <td>${lista[i].data}</td>
                 <td>${lista[i].desc}</td>
             </tr>`)
         } else if (lista[i].tipo == 'Investido'){
             $('tbody').prepend(`<tr style="background-color: darkblue">
                 <td>R$${lista[i].valor}</td>
                 <td>${lista[i].tipo}</td>
+                <td>${lista[i].data}</td>
                 <td>${lista[i].desc}</td>
             </tr>`)
         }
@@ -81,7 +86,7 @@ $(function(){
         if($('#entrada-valor').val() == ''){
             alert('por favor, preencha o campo do valor!')
         } else {
-            var addItem = new item($('#entrada-valor').val(), $('#entrada-descricao').val(), $('#entrada-tipo').val())
+            var addItem = new item($('#entrada-valor').val(), $('#entrada-descricao').val(), $('#entrada-tipo').val(), $('#entrada-data').val())
             lista.push(addItem);
 
             var listaSalva = JSON.stringify(lista);
@@ -91,24 +96,28 @@ $(function(){
                 $('tbody').prepend(`<tr style="background-color: darkgreen">
                     <td>R$${addItem.valor}</td>
                     <td>${addItem.tipo}</td>
+                    <td>${addItem.data}</td>
                     <td>${addItem.desc}</td>
                 </tr>`)
             } else if (addItem.tipo == 'Despesa variável'){
                 $('tbody').prepend(`<tr style="background-color: darkorange">
                     <td>R$${addItem.valor}</td>
                     <td>${addItem.tipo}</td>
+                    <td>${addItem.data}</td>
                     <td>${addItem.desc}</td>
                 </tr>`)
             } else if (addItem.tipo == 'Despesa fixa'){
                 $('tbody').prepend(`<tr style="background-color: darkred">
                     <td>R$${addItem.valor}</td>
                     <td>${addItem.tipo}</td>
+                    <td>${addItem.data}</td>
                     <td>${addItem.desc}</td>
                 </tr>`)
             } else if (addItem.tipo == 'Investido'){
                 $('tbody').prepend(`<tr style="background-color: darkblue">
                     <td>R$${addItem.valor}</td>
                     <td>${addItem.tipo}</td>
+                    <td>${addItem.data}</td>
                     <td>${addItem.desc}</td>
                 </tr>`)
             }
@@ -116,4 +125,27 @@ $(function(){
     })
 
     /*****/
+
+    // Criando o cálculo de lucro / saldo / investimento dinâmico, utilizando as informações de entrada
+    if($('header .select').text() == 'Relatório'){
+        var resultado = 0;
+        var investido = 0;
+
+        for(let e = 0; e < lista.length; e++){
+            if(lista[e].tipo == 'Crédito'){
+                resultado = resultado + Number(lista[e].valor);
+            } else if(lista[e].tipo == 'Despesa fixa' || lista[e].tipo == 'Despesa variável'){
+                resultado = resultado - Number(lista[e].valor);
+            } else if(lista[e].tipo == 'Investido'){
+                investido = investido + Number(lista[e].valor);
+            }
+        }
+
+        $('#lucro-span').html('R$'+resultado)
+        $('#inv-span').html('R$'+investido)
+    }
+
+    /*****/
+
+    // Adicionando o gráfico no relatório
 })

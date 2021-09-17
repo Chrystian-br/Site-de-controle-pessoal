@@ -98,7 +98,7 @@ header{
 i.btn-menu{
     position: absolute;
     top: 20px;
-    left: 23%;
+    left: 4%;
     transform: translateX(-50%);
     font-size: 28px;
     display: inline-block;
@@ -108,10 +108,11 @@ i.btn-menu{
 }
 
 .sidebar{
+    display: none;
     position: absolute;
     top: 0;
     left:0;
-    width: 20%;
+    width: 0;
     height: 100%;
     background-color: #575b64;
 }
@@ -184,6 +185,10 @@ main{
     text-transform: uppercase;
 }
 
+.entrada-box thead tr th:not(:nth-of-type(4)){
+    width: calc(50% / 3);
+}
+
 .entrada-box thead th input,
 .entrada-box thead th select{
     border: 1px solid black;
@@ -219,6 +224,43 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 10px 0;
     border: 1px solid black;
     color: rgb(236, 236, 236);
+}
+
+
+/* Corpo - Relatório */
+
+.relatorio{
+    position: relative;
+    top: 40px;
+    left: 0;
+    text-align: center;
+}
+
+.relatorio h1{
+    font-size: 50px;
+}
+
+
+.relatorio .lucro h2{
+    margin-top: 20px;
+    line-height: 35px;
+    font-size: 30px;
+    color: #333
+}
+
+.relatorio .lucro h2 span{
+    font-size: 40px;
+}
+
+.relatorio .lucro p{
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+.relatorio .lucro p span{
+    color: green; 
+    font-size: 30px; 
+    font-weight: bold;
 }
 
 
