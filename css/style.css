@@ -152,9 +152,9 @@ main{
 
 .entrada-box{
     position: relative;
-    left: 20%;
+    left: 5%;
     top: 75px;
-    width: 82.5%;
+    width: 90%;
     max-height: 81.3%;
     overflow-y: auto;
 }
@@ -263,6 +263,11 @@ input[type=number]::-webkit-inner-spin-button {
     font-weight: bold;
 }
 
+
+.relatorio .grafico-lucro{
+    width: 1000px;
+    margin: 50px auto;
+}
 
 
 @media screen and (max-width: 1080px){
