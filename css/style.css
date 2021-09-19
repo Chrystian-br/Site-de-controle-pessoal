@@ -270,6 +270,12 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 
+.grafico-lucro label{
+    font-size: 19px;
+}
+
+
+
 @media screen and (max-width: 1080px){
     .sidebar{
         display: none;

@@ -40,7 +40,7 @@ $(function(){
         localStorage.listaSalva = lista;
     } else {
         lista = JSON.parse(localStorage.getItem('listaSalva'));
-    }
+    } // Fazendo com que a lista seja criada caso não existam transações salvas, mas que mantenha os valores salvos caso já existam.
 
     function item(valor,desc,tipo,data){
         this.valor = valor;
@@ -49,7 +49,7 @@ $(function(){
         this.data = data;
     }
 
-    for(let i = 0; i < lista.length; i++){
+    for(let i = 0; i < lista.length; i++){ // Colocando todas as transações salvas no localStorage dentro da página, ao abri/atualizar esta.
         if(lista[i].tipo == 'Crédito'){
             $('tbody').prepend(`<tr style="background-color: darkgreen">
                 <td>R$${lista[i].valor}</td>
@@ -72,7 +72,7 @@ $(function(){
                 <td>${lista[i].desc}</td>
             </tr>`)
         } else if (lista[i].tipo == 'Investido'){
-            $('tbody').prepend(`<tr style="background-color: darkblue">
+            $('tbody').prepend(`<tr style="background-color: rgba(54, 162, 235, 0.5)">
                 <td>R$${lista[i].valor}</td>
                 <td>${lista[i].tipo}</td>
                 <td>${lista[i].data}</td>
@@ -83,8 +83,8 @@ $(function(){
 
     $('input[type=button]').click(function(){
 
-        if($('#entrada-valor').val() == ''){
-            alert('por favor, preencha o campo do valor!')
+        if($('#entrada-valor').val() == '' || $('#entrada-data').val() == ''){
+            alert('por favor, preencha os campos obrigatórios!')
         } else {
             var addItem = new item($('#entrada-valor').val(), $('#entrada-descricao').val(), $('#entrada-tipo').val(), $('#entrada-data').val())
             lista.push(addItem);
@@ -92,7 +92,7 @@ $(function(){
             var listaSalva = JSON.stringify(lista);
             localStorage.listaSalva = listaSalva;
         
-            if(addItem.tipo == 'Crédito'){
+            if(addItem.tipo == 'Crédito'){ // Adicionando as novas transações na página e no localStorage
                 $('tbody').prepend(`<tr style="background-color: darkgreen">
                     <td>R$${addItem.valor}</td>
                     <td>${addItem.tipo}</td>
@@ -114,7 +114,7 @@ $(function(){
                     <td>${addItem.desc}</td>
                 </tr>`)
             } else if (addItem.tipo == 'Investido'){
-                $('tbody').prepend(`<tr style="background-color: darkblue">
+                $('tbody').prepend(`<tr style="background-color: rgba(54, 162, 235, 0.5)">
                     <td>R$${addItem.valor}</td>
                     <td>${addItem.tipo}</td>
                     <td>${addItem.data}</td>
@@ -131,7 +131,7 @@ $(function(){
         var resultado = 0;
         var investido = 0;
 
-        for(let e = 0; e < lista.length; e++){
+        for(let e in lista){
             if(lista[e].tipo == 'Crédito'){
                 resultado = resultado + Number(lista[e].valor);
             } else if(lista[e].tipo == 'Despesa fixa' || lista[e].tipo == 'Despesa variável'){
@@ -141,67 +141,158 @@ $(function(){
             }
         }
 
-        $('#lucro-span').html('R$'+resultado)
-        $('#inv-span').html('R$'+investido)
+        if(resultado < 0){
+            $('#saldo-span').html('-R$'+(resultado * -1)).css('color','red')
+        } else if(resultado > 0){
+            $('#saldo-span').html('R$'+resultado).css('color','green')
+        }
+
+        $('#inv-span').html('R$'+investido).css('color','blue')
         /*****/
 
-        // Adicionando o gráfico no relatório
+
+        // Adicionando e dinamizando o gráfico no relatório
         var pontos = [];
-        var dias = [];
-        var meses = [];
-        var valores = [];
-        var soma = 0;
+        var investimento = []
         var dataSplit;
 
-        for(let n = 0; n < lista.length; n++){
-            dataSplit = (lista[n].data).split('/')
-            pontos.push({
-                dia: dataSplit[0],
-                mes: dataSplit[1]
-            })
-
-            // Colocando os valores nos pontos
-            if(lista[n].tipo == 'Crédito'){
-                soma = soma + Number(lista[n].valor);
-            } else if(lista[n].tipo == 'Despesa fixa' || lista[n].tipo == 'Despesa variável'){
-                soma = soma - Number(lista[n].valor);
+        function addPonto(valor){ // Função para adicionar pontos específicos para cada mês, com a soma de todas as transações mensais
+            this.valor = valor;
+            this.somaTotal = function(){
+                let result = 0;
+                for(let b in valor){
+                    result = result + Number(valor[b]);
+                }
+                return result;
             }
-            valores.push(soma);
         }
 
-        function ordenarMeses(){
-            for(let m = 0; m < pontos.length; m++){
-                meses.push(pontos[m].mes)
-            }
-
-            return meses.sort()
+        for(let n = 0; n < 12; n++){
+            pontos.push(new addPonto([]));
+            investimento.push(new addPonto([]));
         }
-        
+
+        for(let d = 0; d < lista.length; d++){
+            dataSplit = lista[d].data.split('/')
+
+            if(lista[d].tipo == 'Crédito'){ // Condições para colocar cada valor em seu devido mês
+                switch(dataSplit[1]){
+                    case '01': pontos[0].valor.push(lista[d].valor);
+                    break;
+                    case '02': pontos[1].valor.push(lista[d].valor);
+                    break;
+                    case '03': pontos[2].valor.push(lista[d].valor);
+                    break;
+                    case '04': pontos[3].valor.push(lista[d].valor);
+                    break;
+                    case '05': pontos[4].valor.push(lista[d].valor);
+                    break;
+                    case '06': pontos[5].valor.push(lista[d].valor);
+                    break;
+                    case '07': pontos[6].valor.push(lista[d].valor);
+                    break;
+                    case '08': pontos[7].valor.push(lista[d].valor);
+                    break;
+                    case '09': pontos[8].valor.push(lista[d].valor);
+                    break;
+                    case '10': pontos[9].valor.push(lista[d].valor);
+                    break;
+                    case '11': pontos[10].valor.push(lista[d].valor);
+                    break;
+                    case '12': pontos[11].valor.push(lista[d].valor);
+                    break;
+                }
+            } else if(lista[d].tipo == 'Despesa fixa' || lista[d].tipo == 'Despesa variável'){
+                switch(dataSplit[1]){
+                    case '01': pontos[0].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '02': pontos[1].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '03': pontos[2].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '04': pontos[3].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '05': pontos[4].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '06': pontos[5].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '07': pontos[6].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '08': pontos[7].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '09': pontos[8].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '10': pontos[9].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '11': pontos[10].valor.push(lista[d].valor * (-1));
+                    break;
+                    case '12': pontos[11].valor.push(lista[d].valor * (-1));
+                    break;
+                }
+            } else if(lista[d].tipo == "Investido"){
+                switch(dataSplit[1]){
+                    case '01': investimento[0].valor.push(lista[d].valor);
+                    break;
+                    case '02': investimento[1].valor.push(lista[d].valor);
+                    break;
+                    case '03': investimento[2].valor.push(lista[d].valor);
+                    break;
+                    case '04': investimento[3].valor.push(lista[d].valor);
+                    break;
+                    case '05': investimento[4].valor.push(lista[d].valor);
+                    break;
+                    case '06': investimento[5].valor.push(lista[d].valor);
+                    break;
+                    case '07': investimento[6].valor.push(lista[d].valor);
+                    break;
+                    case '08': investimento[7].valor.push(lista[d].valor);
+                    break;
+                    case '09': investimento[8].valor.push(lista[d].valor);
+                    break;
+                    case '10': investimento[9].valor.push(lista[d].valor);
+                    break;
+                    case '11': investimento[10].valor.push(lista[d].valor);
+                    break;
+                    case '12': investimento[11].valor.push(lista[d].valor);
+                    break;
+                }
+            }
+        }
+
+        var pontosCase = []
+        var investimentoCase = []
+        for(let p in pontos){
+            pontosCase.push(pontos[p].somaTotal());
+            investimentoCase.push(investimento[p].somaTotal())
+        } // Colocando os valores de cada soma das transações mensais em arrays, para aplicá-los no gráfico
+
+
         var ctx = $('#grafico');
         var grafico = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ordenarMeses(), // Fazer com que organize o array de modo crescente de acordo com os meses e dias
+                labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
                 datasets: [{
-                    label: 'Grafico',
-                    data: valores,
+                    label: 'Lucro/gasto',
+                    data: pontosCase,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+                        'rgba(255, 99, 132, 0.2)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
+                        'rgba(255, 99, 132, 1)'
                     ],
-                    borderWidth: 1
+                    borderWidth: 2
+                },
+                {
+                    label: 'Investimento',
+                    data: investimentoCase,
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 2
                 }]
             },
             options: {
@@ -215,6 +306,4 @@ $(function(){
     }
 
     /*****/
-
-    
 })
