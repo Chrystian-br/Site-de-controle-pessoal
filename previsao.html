@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="O site perfeito para você organizar sua vida!">
+    <meta name="keywords" content="site,organização,webapp,dia-a-dia,todo-list,metas">
+    <meta name="author" content="Chrystian Coelho">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/financas.css">
+
+    <title>Site para controle pessoal</title>
+</head>
+<body>
+    
+    <header>
+        <nav class="desktop-menu">
+            <ul>
+                <li><a href="entrada.html">Entrada</a></li>
+                <li><a href="saida.html">Relatório</a></li>
+                <li><a class="select" href="previsao.html">Previsão</a></li>
+            </ul>
+        </nav>
+        <div class="clear"></div>
+    </header>
+
+    <section class="corpo">
+        <i class="fa fa-bars btn-menu"></i>
+        <aside class="lateral-sidebar">
+            <div class="sidebar">     
+                <div class="logo"><h2>Organizando<br>sua vida</h2></div>
+                <nav class="sidebar-menu">
+                    <ul>
+                        <li><a class="disabled" href="">Página inicial</a></li>
+                        <li><a class="select" href="">Controle de finanças</a></li>
+                        <li><a class="disabled" href="">To-do list</a></li>
+                        <li><a class="disabled" href="">Metas pessoais</a></li>
+                    </ul>
+                </nav> <!--sidebar-menu-->
+            </div>
+        </aside> <!--sidebar-->
+
+        <main>
+            <div class="previsao">
+                <div class="ganhos-mensais">
+                    <h2>Ganhos Mensais</h2>
+                    <p>Obs: As informações adicionadas aqui não interferem nas entradas das outras abas, assim como estas não interferem nas informações desta página</p>
+
+                    <table class="lista-ganhos-mensais">
+                        <tr>
+                            <td><input type="number" min="0" id="valor-salario" placeholder="* Digite sua renda mensal"></td>
+                            <td><input type="button" id="btn-salario" value="Salvar"></td>
+                        </tr>
+                        <tr>
+                            <td>R$999.99</td>
+                            <td><i class="far fa-edit"></i></td>
+                        </tr>
+                    </table> <!--lista-ganhos-mensais-->
+                </div> <!--ganhos-mensais-->
+
+                <div class="despesas-mensais">
+                    <h2>Despesas Mensais</h2>
+                    <p>Adicione aqui todas as despesas fixas que você possui mensalmente, para que seja possível calcular com precisão as previsões de gastos.</p>
+
+                    <table class="lista-despesas-mensais">
+                        <thead>
+                            <tr>
+                                <th><input type="number" id="valor-despesa" placeholder="* Digite sua despesa fixa"></th>
+                                <th><input type="text" id="descricao-despesa" placeholder="Descreva sua despesa"></th>
+                                <th><input type="button" id="btn-despesa" value="Adicionar"></th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>R$999.99</td>
+                                <td>Conta de luz</td>
+                                <td><i class="fas fa-times"></i></td>
+                            </tr>
+                            <tr>
+                                <td>R$999.99</td>
+                                <td>Conta de água</td>
+                                <td><i class="fas fa-times"></i></td>
+                            </tr>
+                            <tr>
+                                <td>R$999.99</td>
+                                <td>Internet</td>
+                                <td><i class="fas fa-times"></i></td>
+                            </tr>
+                        </tbody>
+                    </table> <!--lista-despesas-mensais-->
+                </div> <!--despesas-mensais-->
+
+                <div class="previsoes">
+                    <h2>Previsões de gastos</h2>
+                    <p>Adicione aqui todos os gastos fixos que você pretende adicionar, para que possa ver como ficaria sua carteira mensalmente ao pagar suas pendência</p>
+
+                    <table class="lista-previsoes">
+                        <thead>
+                            <tr>
+                                <th><input type="number" id="valor-previsao" placeholder="* Digite o valor"></th>
+                                <th><input type="number" id="juros-previsao" placeholder="Juros"></th>
+                                <th><input type="text" id="descricao-previsao" placeholder="Descreva o produto"></th>
+                                <th><input type="button" id="btn-previsao" value="Prever"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span>R$333.33</span>
+                                    <select class="parcela-select">
+                                        <option value="1x">1x</option>
+                                        <option value="6x">6x</option>
+                                        <option value="12x">12x</option>
+                                    </select>
+                                </td>
+                                <td>2%</td>
+                                <td>Computador gamer</td>
+                                <td><i class="fas fa-times"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>R$333.33</span>
+                                    <select class="parcela-select">
+                                        <option value="1x">1x</option>
+                                        <option value="6x">6x</option>
+                                        <option value="12x">12x</option>
+                                    </select>
+                                </td>
+                                <td>2%</td>
+                                <td>Computador gamer</td>
+                                <td><i class="fas fa-times"></i></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>R$333.33</span>
+                                    <select class="parcela-select">
+                                        <option value="1x">1x</option>
+                                        <option value="6x">6x</option>
+                                        <option value="12x">12x</option>
+                                    </select>
+                                </td>
+                                <td>2%</td>
+                                <td>Computador gamer</td>
+                                <td><i class="fas fa-times"></i></td>
+                            </tr>
+                        </tbody>
+                    </table> <!--lista-previsoes-->
+
+                    <footer>
+                        <h3>Seu saldo mensal disponível ficaria em <span style="color:green;">R$333.33</span></h3>
+                        <h3>- Após <span style="color: yellow; font-weight: bold;">6 meses</span>, seu saldo mensal passaria a ser <span style="color: green; font-weight: bold;">R$666.66</span></h3>
+                        <h3>- Após <span style="color: yellow; font-weight: bold;">12 meses</span>, seu saldo mensal passaria a ser <span style="color: green; font-weight: bold;">R$999.99</span></h3>
+                    </footer>
+                </div> <!--previsoes-->
+            </div> <!--previsao-->
+        </main>
+    </section> <!--corpo-->
+
+
+    <script src="https://kit.fontawesome.com/cb240737b9.js" crossorigin="anonymous"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/previsao.js"></script>
+</body>
+</html>

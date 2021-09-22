@@ -1,39 +1,5 @@
 $(function(){
 
-    // Abrindo e fechando o menu lateral
-    $('.btn-menu').click(function(){
-        if($('.sidebar').css('display') == 'block'){
-            $('.sidebar').animate({
-                'width': '0%',
-            }).fadeOut(5);
-
-            $('main > *').animate({
-                'left': '5%',
-                'width': '90%'
-            })
-
-            $('.btn-menu').animate({
-                'left':'4%'
-            })
-
-        } else if($('.sidebar').css('display') == 'none') {
-            $('.sidebar').fadeIn(10).animate({
-                'width':'20%'
-            })
-
-            $('main > *').animate({
-                'left': '20%',
-                'width':'82.5%'
-            })
-
-            $('.btn-menu').animate({
-                'left':'23%'
-            })
-
-        }
-    })
-    /*****/
-
     // Recebendo as informações do formulário, colocando-as no histórico e salvando-as no localStorage
     if(localStorage.listaSalva == undefined || localStorage.listaSalva == 'NaN' || localStorage.listaSalva == ''){
         var lista = [];
@@ -276,26 +242,21 @@ $(function(){
                     label: 'Lucro/gasto',
                     data: pontosCase,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)'
+                        'rgba(255, 99, 132, 0.7)'
                     ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)'
-                    ],
-                    borderWidth: 2
+                    borderWidth: 0
                 },
                 {
                     label: 'Investimento',
                     data: investimentoCase,
                     backgroundColor: [
-                        'rgba(54, 162, 235, 0.2)'
+                        'rgba(54, 162, 235, 0.7)'
                     ],
-                    borderColor: [
-                        'rgba(54, 162, 235, 1)'
-                    ],
-                    borderWidth: 2
+                    borderWidth: 0
                 }]
             },
             options: {
+                responsive: true,
                 scales: {
                     y: {
                         beginAtZero: true

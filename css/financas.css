@@ -1,0 +1,388 @@
+/* Corpo - Entrada */
+
+main{
+    width: 100%;
+    height: 100%;
+    padding: 0 70px;
+}
+
+.entrada-box{
+    position: relative;
+    left: 5%;
+    top: 75px;
+    width: 90%;
+    max-height: 81.3%;
+    overflow-y: auto;
+}
+
+.entrada-box h1{
+    font-size: 35px;
+    border-bottom: 1px solid #626670;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: #9095a1;
+}
+
+.entrada-box table{
+    width: 100%;
+    max-height: inherit;
+    padding: 5px 0;
+    border-collapse: collapse;
+}
+
+.entrada-box thead{
+    background-color: #9095a1;
+}
+
+.entrada-box thead tr:first-of-type th{
+    border: 2px solid black;
+    padding: 15px 0;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.entrada-box thead tr th:not(:nth-of-type(4)){
+    width: calc(50% / 3);
+}
+
+.entrada-box thead th input,
+.entrada-box thead th select{
+    border: 1px solid black;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #808591;
+    color: white;
+    font-size: 17px;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;    
+}
+
+.entrada-box thead th input::placeholder{
+    color: rgba(255,255,255,0.5);
+}
+
+.entrada-box thead th input[type=button]:hover{
+    background-color: #626670;
+    cursor: pointer;
+}
+
+.entrada-box table tbody{
+    background-color: #9095a1;
+}
+
+.entrada-box table tbody td{
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid black;
+    color: rgb(236, 236, 236);
+}
+
+/****/
+
+/* Corpo - Relatório */
+
+.relatorio{
+    position: relative;
+    top: 15px;
+    left: 0;
+    text-align: center;
+}
+
+.relatorio h1{
+    font-size: 50px;
+}
+
+
+.relatorio .lucro h2{
+    margin-top: 10px;
+    line-height: 35px;
+    font-size: 30px;
+    color: #333
+}
+
+.relatorio .lucro h2 span{
+    font-size: 40px;
+}
+
+.relatorio .lucro p{
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+.relatorio .lucro p span{
+    color: green; 
+    font-size: 30px; 
+    font-weight: bold;
+}
+
+
+.relatorio .grafico-lucro{
+    width: 80%;
+    margin: 20px auto;
+}
+
+
+.grafico-lucro label{
+    font-size: 19px;
+}
+
+/****/
+
+/* Corpo - Previsão */
+
+.previsao{
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.ganhos-mensais{
+    width: 60%;
+    padding: 25px 50px;
+    background-color: #808591;
+    color: white;
+    border-radius: 30px;
+    margin: 0 auto;
+}
+
+.ganhos-mensais h2{
+    font-size: 40px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.lista-ganhos-mensais{
+    width: 100%;
+}
+
+.lista-ganhos-mensais tr:last-of-type{
+    display: none;
+}
+
+.lista-ganhos-mensais tr td:first-of-type{
+    width: 86.5%;
+    padding: 10px 0;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.lista-ganhos-mensais tr td:last-of-type{
+    width: 13.5%;
+    text-align: center;
+}
+
+.lista-ganhos-mensais tr td > i{
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 255px;
+}
+
+.lista-ganhos-mensais tr td > i:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+.ganhos-mensais input[type=number]{
+    display: inline-block;
+    width: 99%;
+    height: 45px;
+    line-height: 45px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin: 20px 0;
+    border: 0;
+}
+
+.previsao input[type=button]{
+    display: inline-block;
+    width: 100%;
+    height: 45px;
+    font-size: 19px;
+    background-color: #626670;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+}
+
+.previsao input[type=button]:hover{
+    background-color: #575a63;
+}
+
+/*----------*/
+
+.despesas-mensais{
+    width: 70%;
+    padding: 25px 50px;
+    background-color: #838996;
+    color: white;
+    border-radius: 30px;
+    margin: 50px auto;
+}
+
+.despesas-mensais h2{
+    font-size: 40px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.lista-despesas-mensais{
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.lista-despesas-mensais thead th:nth-of-type(1){
+    width: 30%;
+}
+
+.lista-despesas-mensais thead th:nth-of-type(2){
+    width: 55%;
+}
+
+.lista-despesas-mensais thead th:nth-of-type(3){
+    width: 15%;
+}
+
+.lista-despesas-mensais thead input{
+    width: 98%;
+    height: 45px;
+    line-height: 45px;
+    padding-left: 10px;
+    font-size: 18px;
+    border: 0;
+}
+
+.lista-despesas-mensais tbody td:not(:nth-of-type(3)){
+    font-size: 20px;
+    padding: 20px 10px;
+    border-bottom: 1px solid #444;
+}
+
+.lista-despesas-mensais tbody td:nth-of-type(3){
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+.lista-despesas-mensais tbody td > i{
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 255px;
+}
+
+.lista-despesas-mensais tbody td > i:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+/*-------------*/
+
+.previsoes{
+    width: 80%;
+    padding: 25px 50px;
+    background-color: #8e94a1;
+    color: white;
+    border-radius: 30px;
+    margin: 50px auto;
+}
+
+.previsoes h2{
+    font-size: 40px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.lista-previsoes{
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.lista-previsoes thead th:not(:nth-of-type(3)){
+    width: calc(50% / 3);
+}
+
+.lista-previsoes input{
+    width: 98%;
+    height: 45px;
+    line-height: 45px;
+    padding-left: 10px;
+    font-size: 18px;
+    border: 0;
+}
+
+.lista-previsoes input[type=number]{
+    text-align: center;
+    padding-left: 0;
+}
+
+.lista-previsoes tbody td{
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid #666;
+}
+
+.lista-previsoes tbody td:nth-of-type(1){
+    position: relative;
+    top: 1px;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.lista-previsoes tbody td span{
+    width: 70%;
+}
+
+.lista-previsoes tbody td select{
+    width: 30%;
+}
+
+.lista-previsoes tbody td > i{
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 255px;
+}
+
+.lista-previsoes tbody td > i:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+/*---------------*/
+
+.previsao footer{
+    padding: 30px 0;
+    font-size: 22px;
+}
+
+.previsao footer h3:nth-of-type(1n + 2){
+    font-size: 20px;
+    font-weight: lighter;
+    margin-top: 10px;
+}
+
+/****/
+
+
+
+
+@media screen and (max-width: 1080px){
+    .entrada-box{
+        width: 100%;
+        left: 0;
+    }
+
+    .relatorio .grafico-lucro{
+        width: 100%;
+    }
+}

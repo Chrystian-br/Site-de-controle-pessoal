@@ -99,6 +99,7 @@ i.btn-menu{
     position: absolute;
     top: 20px;
     left: 4%;
+    z-index: 2;
     transform: translateX(-50%);
     font-size: 28px;
     display: inline-block;
@@ -107,9 +108,19 @@ i.btn-menu{
     cursor: pointer;
 }
 
-.sidebar{
+.lateral-sidebar{
     display: none;
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.sidebar{
+    position: fixed;
     top: 0;
     left:0;
     width: 0;
@@ -142,151 +153,3 @@ i.btn-menu{
 
 /****/
 
-/* Corpo - Entrada */
-
-main{
-    width: 100%;
-    height: 100%;
-    padding: 0 70px;
-}
-
-.entrada-box{
-    position: relative;
-    left: 5%;
-    top: 75px;
-    width: 90%;
-    max-height: 81.3%;
-    overflow-y: auto;
-}
-
-.entrada-box h1{
-    font-size: 35px;
-    border-bottom: 1px solid #626670;
-    padding: 20px;
-    border: 2px solid black;
-    background-color: #9095a1;
-}
-
-.entrada-box table{
-    width: 100%;
-    max-height: inherit;
-    padding: 5px 0;
-    border-collapse: collapse;
-}
-
-.entrada-box thead{
-    background-color: #9095a1;
-}
-
-.entrada-box thead tr:first-of-type th{
-    border: 2px solid black;
-    padding: 15px 0;
-    font-size: 20px;
-    text-transform: uppercase;
-}
-
-.entrada-box thead tr th:not(:nth-of-type(4)){
-    width: calc(50% / 3);
-}
-
-.entrada-box thead th input,
-.entrada-box thead th select{
-    border: 1px solid black;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    background-color: #808591;
-    color: white;
-    font-size: 17px;
-    -moz-appearance: textfield;
-    appearance: textfield;
-}
-
-input[type=number]::-webkit-inner-spin-button { 
-    -webkit-appearance: none;    
-}
-
-.entrada-box thead th input::placeholder{
-    color: rgba(255,255,255,0.5);
-}
-
-.entrada-box thead th input[type=button]:hover{
-    background-color: #626670;
-    cursor: pointer;
-}
-
-.entrada-box table tbody{
-    background-color: #9095a1;
-}
-
-.entrada-box table tbody td{
-    text-align: center;
-    padding: 10px 0;
-    border: 1px solid black;
-    color: rgb(236, 236, 236);
-}
-
-
-/* Corpo - Relatório */
-
-.relatorio{
-    position: relative;
-    top: 40px;
-    left: 0;
-    text-align: center;
-}
-
-.relatorio h1{
-    font-size: 50px;
-}
-
-
-.relatorio .lucro h2{
-    margin-top: 20px;
-    line-height: 35px;
-    font-size: 30px;
-    color: #333
-}
-
-.relatorio .lucro h2 span{
-    font-size: 40px;
-}
-
-.relatorio .lucro p{
-    font-size: 25px;
-    margin-top: 30px;
-}
-
-.relatorio .lucro p span{
-    color: green; 
-    font-size: 30px; 
-    font-weight: bold;
-}
-
-
-.relatorio .grafico-lucro{
-    width: 1000px;
-    margin: 50px auto;
-}
-
-
-.grafico-lucro label{
-    font-size: 19px;
-}
-
-
-
-@media screen and (max-width: 1080px){
-    .sidebar{
-        display: none;
-    }
-
-    .entrada-box{
-        width: 100%;
-        left: 0;
-    }
-
-    i.btn-menu{
-        left: 4%;
-    }
-}

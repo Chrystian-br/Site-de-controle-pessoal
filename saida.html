@@ -9,6 +9,7 @@
     <meta name="author" content="Chrystian Coelho">
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/financas.css">
 
     <title>Site para controle pessoal!</title>
 </head>
@@ -19,7 +20,7 @@
             <ul>
                 <li><a href="entrada.html">Entrada</a></li>
                 <li><a class="select" href="">Relatório</a></li>
-                <li><a href="">Previsão</a></li>
+                <li><a href="previsao.html">Previsão</a></li>
             </ul>
         </nav>
         <div class="clear"></div>
@@ -27,16 +28,18 @@
 
     <section class="corpo">
         <i class="fa fa-bars btn-menu"></i>
-        <aside class="sidebar">
-            <div class="logo"><h2>Organizando<br>sua vida</h2></div>
-            <nav class="sidebar-menu">
-                <ul>
-                    <li><a class="disabled" href="">Página inicial</a></li>
-                    <li><a class="select" href="">Controle de finanças</a></li>
-                    <li><a class="disabled" href="">To-do list</a></li>
-                    <li><a class="disabled" href="">Metas pessoais</a></li>
-                </ul>
-            </nav> <!--sidebar-menu-->
+        <aside class="lateral-sidebar">
+            <div class="sidebar">   
+                <div class="logo"><h2>Organizando<br>sua vida</h2></div>
+                <nav class="sidebar-menu">
+                    <ul>
+                        <li><a class="disabled" href="">Página inicial</a></li>
+                        <li><a class="select" href="">Controle de finanças</a></li>
+                        <li><a class="disabled" href="">To-do list</a></li>
+                        <li><a class="disabled" href="">Metas pessoais</a></li>
+                    </ul>
+                </nav> <!--sidebar-menu-->
+            </div>
         </aside> <!--sidebar-->
 
         <main>
@@ -44,12 +47,16 @@
                 <h1>Relatório de transações</h1>
                 <div class="lucro">
                     <h2>Seu saldo disponível atual é de <span id="saldo-span">R$-----</span>
-                        <br>e seu saldo investido é de <span id="inv-span">R$-----</span></h2>
+                    <br>e seu saldo investido é de <span id="inv-span">R$-----</span></h2>
                 </div> <!--lucro-->
 
                 <div class="grafico-lucro">
                     <canvas id="grafico" width="400" height="200"></canvas>
                 </div> <!--grafico-lucro-->
+                <br>
+                <br>
+                <br>
+                <br>
             </div> <!--relatorio-->
         </main>
     </section> <!--corpo-->
@@ -58,6 +65,7 @@
     <script src="https://kit.fontawesome.com/cb240737b9.js" crossorigin="anonymous"></script>
     <script src="js/jquery.js"></script>
     <script src="js/chart.min.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/functions.js"></script>
 </body>
 </html>
