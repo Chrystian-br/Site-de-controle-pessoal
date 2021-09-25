@@ -3,7 +3,6 @@ $(function(){
     // Recebendo as informações do formulário, colocando-as no histórico e salvando-as no localStorage
     if(localStorage.listaSalva == undefined || localStorage.listaSalva == 'NaN' || localStorage.listaSalva == ''){
         var lista = [];
-        localStorage.listaSalva = lista;
     } else {
         lista = JSON.parse(localStorage.getItem('listaSalva'));
     } // Fazendo com que a lista seja criada caso não existam transações salvas, mas que mantenha os valores salvos caso já existam.
@@ -55,8 +54,7 @@ $(function(){
             var addItem = new item($('#entrada-valor').val(), $('#entrada-descricao').val(), $('#entrada-tipo').val(), $('#entrada-data').val())
             lista.push(addItem);
 
-            var listaSalva = JSON.stringify(lista);
-            localStorage.listaSalva = listaSalva;
+            localStorage.listaSalva = JSON.stringify(lista);
         
             if(addItem.tipo == 'Crédito'){ // Adicionando as novas transações na página e no localStorage
                 $('tbody').prepend(`<tr style="background-color: darkgreen">

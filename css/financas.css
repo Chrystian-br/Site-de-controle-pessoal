@@ -162,7 +162,7 @@ input[type=number]::-webkit-inner-spin-button {
     width: 100%;
 }
 
-.lista-ganhos-mensais tr:last-of-type{
+#salario-salvo{
     display: none;
 }
 
@@ -345,6 +345,10 @@ input[type=number]::-webkit-inner-spin-button {
 
 .lista-previsoes tbody td select{
     width: 30%;
+}
+
+.lista-previsoes tbody td:nth-of-type(2){
+    text-decoration: line-through;
 }
 
 .lista-previsoes tbody td > i{
