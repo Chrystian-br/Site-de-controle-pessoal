@@ -78,10 +78,8 @@ $(function(){
 
         let listaFormatada = lista.filter(function(obj){
             if(obj.desc == itemDesc){
-                console.log('sim')
                 return false;
             } else {
-                console.log('nao')
                 return true;
             }
         })

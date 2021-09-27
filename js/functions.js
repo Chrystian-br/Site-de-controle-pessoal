@@ -21,6 +21,7 @@ $(function(){
                 <td>${lista[i].tipo}</td>
                 <td>${lista[i].data}</td>
                 <td>${lista[i].desc}</td>
+                <td><i class="fas fa-times"></i></td>
             </tr>`)
         } else if (lista[i].tipo == 'Despesa variável'){
             $('tbody').prepend(`<tr style="background-color: darkorange">
@@ -28,6 +29,7 @@ $(function(){
                 <td>${lista[i].tipo}</td>
                 <td>${lista[i].data}</td>
                 <td>${lista[i].desc}</td>
+                <td><i class="fas fa-times"></i></td>
             </tr>`)
         } else if (lista[i].tipo == 'Despesa fixa'){
             $('tbody').prepend(`<tr style="background-color: darkred">
@@ -35,6 +37,7 @@ $(function(){
                 <td>${lista[i].tipo}</td>
                 <td>${lista[i].data}</td>
                 <td>${lista[i].desc}</td>
+                <td><i class="fas fa-times"></i></td>
             </tr>`)
         } else if (lista[i].tipo == 'Investido'){
             $('tbody').prepend(`<tr style="background-color: rgba(54, 162, 235, 0.5)">
@@ -42,14 +45,17 @@ $(function(){
                 <td>${lista[i].tipo}</td>
                 <td>${lista[i].data}</td>
                 <td>${lista[i].desc}</td>
+                <td><i class="fas fa-times"></i></td>
             </tr>`)
         }
     }
 
     $('input[type=button]').click(function(){
-
         if($('#entrada-valor').val() == '' || $('#entrada-data').val() == ''){
-            alert('por favor, preencha os campos obrigatórios!')
+            alert('Por favor, preencha os campos obrigatórios!')
+        } else if(($('#entrada-data').val()).match(/([0-9]{2}\/[0-9]{2})/) == null) {
+            alert(`Por favor, digite uma data real!
+formato: dd/mm`)
         } else {
             var addItem = new item($('#entrada-valor').val(), $('#entrada-descricao').val(), $('#entrada-tipo').val(), $('#entrada-data').val())
             lista.push(addItem);
@@ -62,6 +68,7 @@ $(function(){
                     <td>${addItem.tipo}</td>
                     <td>${addItem.data}</td>
                     <td>${addItem.desc}</td>
+                    <td><i class="fas fa-times"></i></td>
                 </tr>`)
             } else if (addItem.tipo == 'Despesa variável'){
                 $('tbody').prepend(`<tr style="background-color: darkorange">
@@ -69,6 +76,7 @@ $(function(){
                     <td>${addItem.tipo}</td>
                     <td>${addItem.data}</td>
                     <td>${addItem.desc}</td>
+                    <td><i class="fas fa-times"></i></td>
                 </tr>`)
             } else if (addItem.tipo == 'Despesa fixa'){
                 $('tbody').prepend(`<tr style="background-color: darkred">
@@ -76,6 +84,7 @@ $(function(){
                     <td>${addItem.tipo}</td>
                     <td>${addItem.data}</td>
                     <td>${addItem.desc}</td>
+                    <td><i class="fas fa-times"></i></td>
                 </tr>`)
             } else if (addItem.tipo == 'Investido'){
                 $('tbody').prepend(`<tr style="background-color: rgba(54, 162, 235, 0.5)">
@@ -83,9 +92,31 @@ $(function(){
                     <td>${addItem.tipo}</td>
                     <td>${addItem.data}</td>
                     <td>${addItem.desc}</td>
+                    <td><i class="fas fa-times"></i></td>
                 </tr>`)
             }
         }
+    })
+
+    // Removendo item da lista
+    function removerItem(item, lista){
+        let itemDesc = item.parent().parent().find('td:nth-of-type(4)').text();
+        console.log(itemDesc)
+
+        let listaFormatada = lista.filter(function(obj){
+            if(obj.desc == itemDesc){
+                return false;
+            } else {
+                return true;
+            }
+        })
+        return listaFormatada;
+    }
+
+    $(document).on('click','.entrada-box tbody td > i', function(){
+        lista = removerItem($(this), lista);
+        localStorage.listaSalva = JSON.stringify(lista);
+        $(this).parent().parent().remove();
     })
 
     /*****/

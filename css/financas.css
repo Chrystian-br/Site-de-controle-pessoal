@@ -45,6 +45,10 @@ main{
     width: calc(50% / 3);
 }
 
+.entrada-box thead tr th:nth-of-type(5){
+    width: 8%;
+}
+
 .entrada-box thead th input,
 .entrada-box thead th select{
     border: 1px solid black;
@@ -80,6 +84,18 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 10px 0;
     border: 1px solid black;
     color: rgb(236, 236, 236);
+}
+
+.entrada-box table tbody td > i{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 255px;
+}
+
+.entrada-box table tbody td > i:hover{
+    background-color: rgba(0,0,0,0.1);
 }
 
 /****/
